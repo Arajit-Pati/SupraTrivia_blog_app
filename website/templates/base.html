@@ -21,12 +21,22 @@
                 <li class="navbar-item">
                     <a href="/home" class="navbar-link">Home</a>
                 </li>
+                {% if user.is_authenticated %}
+
+                <li class="navbar-item">
+                    <a href="/logout" class="navbar-link">Logout</a>
+                </li>
+
+                {% else %}
+
                 <li class="navbar-item">
                     <a href="/login" class="navbar-link">Login</a>
                 </li>
                 <li class="navbar-item">
                     <a href="/sign-up" class="navbar-link">Sign-up</a>
                 </li>
+
+                {% endif %}
             </ul>
             
             <!-- Mobile Hamburger Menu -->
