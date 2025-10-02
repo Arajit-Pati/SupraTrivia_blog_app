@@ -485,6 +485,7 @@ pre code {
   transition: border-color var(--duration-fast) var(--ease-standard),
     box-shadow var(--duration-fast) var(--ease-standard);
   margin-bottom: var(--space-16);
+  margin-top: var(--space-16);
 }
 
 textarea.form-control {
