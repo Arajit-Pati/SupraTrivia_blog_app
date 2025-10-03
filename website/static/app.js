@@ -89,6 +89,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Handle dropdown toggle
+    document.querySelectorAll(".dropdown-toggle").forEach(button => {
+    button.addEventListener("click", (e) => {
+        e.stopPropagation(); // prevent bubbling
+
+        const menu = button.nextElementSibling;
+
+        // Close all other dropdowns first (optional)
+        document.querySelectorAll(".dropdown-menu.show").forEach(openMenu => {
+        if (openMenu !== menu) openMenu.classList.remove("show");
+        });
+
+        // Toggle the clicked one
+        menu.classList.toggle("show");
+    });
+    });
+
+    // Close dropdown if clicking outside
+    document.addEventListener("click", () => {
+    document.querySelectorAll(".dropdown-menu.show").forEach(menu => {
+        menu.classList.remove("show");
+    });
+    });
+
     // Add active state to current page link (optional enhancement)
     function setActiveLink() {
         const currentPath = window.location.pathname;
