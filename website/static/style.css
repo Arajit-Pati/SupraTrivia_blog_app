@@ -310,7 +310,7 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
+  padding-top: 75px;
 }
 
 *,
@@ -471,6 +471,23 @@ pre code {
   cursor: not-allowed;
 }
 
+/* Close button */
+.btn-close {
+  position: absolute;
+  top: var(--space-8);
+  right: var(--space-12);
+  background: none;
+  border: none;
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: inherit;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  opacity: 0.7;
+}
+
 /* Form elements */
 .form-control {
   display: block;
@@ -590,6 +607,57 @@ select.form-control {
 
 .card_text:hover {
   background-color: rgba(var(--color-teal-500-rgb), 0.05);
+}
+
+/* Flash container pinned at top, centered */
+.flash-container {
+  position: fixed;
+  top: 70px; /* just below navbar (60px high + some gap) */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  width: 90%;
+  max-width: 800px;
+  pointer-events: none; /* clicks pass through if outside */
+}
+
+/* Base alert style */
+.alert {
+  position: relative;
+  padding: var(--space-12) var(--space-16);
+  padding-right: 3rem; /* space for close button */
+  margin: var(--space-16) auto;
+  border-radius: var(--radius-base);
+  justify-content: space-between;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  box-shadow: var(--shadow-sm);
+  opacity: 1;
+  transition: opacity var(--duration-normal) ease-in-out;
+  pointer-events: auto;
+}
+
+/* Variants */
+.alert-success {
+  background-color: rgba(var(--color-success-rgb), 0.1);
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+}
+
+.alert-danger {
+  background-color: rgba(var(--color-error-rgb), 0.1);
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+}
+
+/* Fade out animation */
+.alert.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
 }
 
 .dropdown-toggle {
@@ -715,7 +783,7 @@ select.form-control {
   margin-left: auto;
   padding-right: var(--space-16);
   padding-left: var(--space-16);
-  padding-top: 75px;
+  /* padding-top: 75px; */
 }
 
 @media (min-width: 640px) {

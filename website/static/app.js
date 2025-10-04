@@ -113,6 +113,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     });
 
+    // Auto-dismiss alerts after 4 seconds
+    document.querySelectorAll(".alert").forEach(alert => {
+    setTimeout(() => {
+        alert.classList.add("fade-out");
+        setTimeout(() => alert.remove(), 500); // remove after fade
+    }, 4000);
+    });
+
+    // Manual close with "X" button
+    document.querySelectorAll(".btn-close").forEach(button => {
+    button.addEventListener("click", () => {
+        const alert = button.closest(".alert");
+        alert.classList.add("fade-out");
+        setTimeout(() => alert.remove(), 500);
+    });
+    });
+
     // Add active state to current page link (optional enhancement)
     function setActiveLink() {
         const currentPath = window.location.pathname;

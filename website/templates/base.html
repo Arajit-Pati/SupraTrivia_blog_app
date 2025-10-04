@@ -13,7 +13,7 @@
         <div class="navbar-container">
             <!-- Brand/Logo (optional) -->
             <div class="navbar-brand">
-                <a href="/home" class="brand-link">Brand</a>
+                <a href="/home" class="brand-link"><i>Supra Trivia</i></a>
             </div>
             
             <!-- Navigation Links -->
@@ -50,21 +50,21 @@
 
     {% with messages = get_flashed_messages(with_categories=True) %}
     {% if messages %}
-        {% for category, message in messages %}
-
-        {% if category == 'error' %}
-        <div class="alert alert-danger alert-dismissable fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <div class="flash-container">
+            {% for category, message in messages %}
+                {% if category == 'error' %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert">x</button>
+                </div>
+                {% else %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert">x</button>
+                </div>
+                {% endif %}
+            {% endfor %}
         </div>
-        {% else %}
-        <div class="alert alert-success alert-dismissable fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-        {% endif %}
-
-        {% endfor %}
     {% endif %}
     {% endwith %}
     
