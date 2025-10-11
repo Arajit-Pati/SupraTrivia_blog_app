@@ -113,6 +113,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     });
 
+    document.querySelectorAll("[data-toggle='collapse']").forEach(button => {
+    button.addEventListener("click", () => {
+        const targetSelector = button.getAttribute("data-target");
+        const target = document.querySelector(targetSelector);
+
+        if (!target) return;
+
+        // Close others if you want accordion behavior
+        // document.querySelectorAll(".collapse.show").forEach(open => {
+        //   if (open !== target) open.classList.remove("show");
+        // });
+
+        target.classList.toggle("show");
+    });
+    });
+
     // Auto-dismiss alerts after 4 seconds
     document.querySelectorAll(".alert").forEach(alert => {
     setTimeout(() => {

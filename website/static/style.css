@@ -491,7 +491,7 @@ pre code {
 /* Custom Input Group (for comment forms, etc.) */
 .input-group {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -641,6 +641,19 @@ select.form-control {
 
 .card_text:hover {
   background-color: rgba(var(--color-teal-500-rgb), 0.05);
+}
+
+/* Custom Collapse Component */
+.collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.35s ease;
+  opacity: 0;
+}
+
+.collapse.show {
+  opacity: 1;
+  max-height: 1000px; /* large enough to reveal full content */
 }
 
 /* Flash container pinned at top, centered */
