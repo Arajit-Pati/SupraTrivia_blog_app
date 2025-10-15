@@ -89,63 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Handle dropdown toggle
-    document.querySelectorAll(".dropdown-toggle").forEach(button => {
-    button.addEventListener("click", (e) => {
-        e.stopPropagation(); // prevent bubbling
-
-        const menu = button.nextElementSibling;
-
-        // Close all other dropdowns first (optional)
-        document.querySelectorAll(".dropdown-menu.show").forEach(openMenu => {
-        if (openMenu !== menu) openMenu.classList.remove("show");
-        });
-
-        // Toggle the clicked one
-        menu.classList.toggle("show");
-    });
-    });
-
-    // Close dropdown if clicking outside
-    document.addEventListener("click", () => {
-    document.querySelectorAll(".dropdown-menu.show").forEach(menu => {
-        menu.classList.remove("show");
-    });
-    });
-
-    document.querySelectorAll("[data-toggle='collapse']").forEach(button => {
-    button.addEventListener("click", () => {
-        const targetSelector = button.getAttribute("data-target");
-        const target = document.querySelector(targetSelector);
-
-        if (!target) return;
-
-        // Close others if you want accordion behavior
-        // document.querySelectorAll(".collapse.show").forEach(open => {
-        //   if (open !== target) open.classList.remove("show");
-        // });
-
-        target.classList.toggle("show");
-    });
-    });
-
-    // Auto-dismiss alerts after 4 seconds
-    document.querySelectorAll(".alert").forEach(alert => {
-    setTimeout(() => {
-        alert.classList.add("fade-out");
-        setTimeout(() => alert.remove(), 500); // remove after fade
-    }, 4000);
-    });
-
-    // Manual close with "X" button
-    document.querySelectorAll(".btn-close").forEach(button => {
-    button.addEventListener("click", () => {
-        const alert = button.closest(".alert");
-        alert.classList.add("fade-out");
-        setTimeout(() => alert.remove(), 500);
-    });
-    });
-
     // Add active state to current page link (optional enhancement)
     function setActiveLink() {
         const currentPath = window.location.pathname;
@@ -219,6 +162,61 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, { passive: true });
 
-    // Initialize any additional features
-    console.log('Navigation bar initialized successfully');
+    // Handle dropdown toggle
+    document.querySelectorAll(".dropdown-toggle").forEach(button => {
+    button.addEventListener("click", (e) => {
+        e.stopPropagation(); // prevent bubbling
+
+        const menu = button.nextElementSibling;
+
+        // Close all other dropdowns first (optional)
+        document.querySelectorAll(".dropdown-menu.show").forEach(openMenu => {
+        if (openMenu !== menu) openMenu.classList.remove("show");
+        });
+
+        // Toggle the clicked one
+        menu.classList.toggle("show");
+    });
+    });
+
+    // Close dropdown if clicking outside
+    document.addEventListener("click", () => {
+    document.querySelectorAll(".dropdown-menu.show").forEach(menu => {
+        menu.classList.remove("show");
+    });
+    });
+
+    // handle comment viewing
+    document.querySelectorAll("[data-toggle='collapse']").forEach(button => {
+    button.addEventListener("click", () => {
+        const targetSelector = button.getAttribute("data-target");
+        const target = document.querySelector(targetSelector);
+
+        if (!target) return;
+
+        // Close others if you want accordion behavior
+        // document.querySelectorAll(".collapse.show").forEach(open => {
+        //   if (open !== target) open.classList.remove("show");
+        // });
+
+        target.classList.toggle("show");
+    });
+    });
+
+    // Auto-dismiss alerts after 4 seconds
+    document.querySelectorAll(".alert").forEach(alert => {
+    setTimeout(() => {
+        alert.classList.add("fade-out");
+        setTimeout(() => alert.remove(), 500); // remove after fade
+    }, 4000);
+    });
+
+    // Manual close with "X" button
+    document.querySelectorAll(".btn-close").forEach(button => {
+    button.addEventListener("click", () => {
+        const alert = button.closest(".alert");
+        alert.classList.add("fade-out");
+        setTimeout(() => alert.remove(), 500);
+    });
+    });
 });
